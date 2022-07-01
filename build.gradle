@@ -1,0 +1,54 @@
+buildscript {
+  ext {
+    kotlinVersion = "1.6.21"
+    springBootVersion = "2.7.1"    
+  }
+  repositories {
+    mavenCentral()
+  }
+  dependencies {
+    classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion"
+    classpath "org.jetbrains.kotlin:kotlin-noarg:$kotlinVersion"
+  }
+}
+
+plugins {
+  id "org.springframework.boot" version "${springBootVersion}"
+  id "io.spring.dependency-management" version "1.0.11.RELEASE"
+  id "java-library"
+  id "net.researchgate.release" version "2.6.0"
+}
+
+apply plugin: "java"
+apply plugin: "kotlin"
+apply plugin: "kotlin-spring"
+apply plugin: "kotlin-noarg"
+apply plugin: "kotlin-kapt"
+apply plugin: "org.springframework.boot"
+apply plugin: "io.spring.dependency-management"
+apply plugin: "org.jetbrains.kotlin.jvm"
+
+
+repositories {
+  mavenCentral()
+}
+
+group = "br.com.blz.testjava"
+sourceCompatibility = JavaVersion.VERSION_11
+
+dependencies {
+  implementation("org.springframework.boot:spring-boot-starter-web:$springBootVersion")
+  implementation("org.springframework.boot:spring-boot-starter-validation:$springBootVersion")
+  implementation("io.github.microutils:kotlin-logging:2.1.23")  
+  testImplementation("org.springframework.boot:spring-boot-starter-test")
+}
+
+test {
+  useJUnitPlatform()
+}
+
+jar {
+  enabled = true
+}
