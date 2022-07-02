@@ -1,6 +1,6 @@
 package br.com.blz.testjava.entity
 
-import br.com.blz.testjava.enum.WarehouseTypeEnum
+import br.com.blz.testjava.enums.WarehouseTypeEnum
 
 data class WarehousesEntity(
   var locality: String? = null,
